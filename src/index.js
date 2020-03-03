@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
+/* 
 function RecipeHeader(props){
     return (
         
     )
-}
+} */
 
 class IngredientsArea extends React.Component{
     render(){
@@ -50,24 +50,74 @@ class StepsArea extends React.Component{
     }
 }
 
-class RecipeArea extends React.Component{
+class RecipeHeader extends React.Component{
     render(){
         return (
             <main>
-                
+                <hedaer>
+                    <h1>{this.props.title}</h1>
+                    <h2>{this.props.desc}</h2>
+                    <div>
+                        <p id="prep">Preparation Time: {this.props.prepTime}</p>
+                        <p id="difficulty">Difficulty: {this.props.difficultyLevel}</p>
+                    </div>
+                </hedaer>
             </main>
         )
     }
 }
+
+class RecipeArea extends React.Component{
+    render(){
+        return (
+            <main>
+                <IngredientsArea ingredients={this.props.cookieIngredients}></IngredientsArea>
+                <StepsArea steps={this.props.cookieSteps} notes={this.props.notes}></StepsArea>
+            </main>
+        )
+    }
+}
+
 class RecipeTemplate extends React.Component{
     constructor(props){
         super(props);
-        this.state = {}
+        this.state = {
+            data: 
+            {
+                title:"A Chocolate Tentacle Cookie",
+                descriptor:"Easy chocolate chip cookies will take your taste buds from 0 to awesome in no time flat.",
+                prepTime:"40 minutes",
+                difficultyLevel:"easy",
+                cookieSteps: [
+                    "Heat oven to 375°F (190°C).",
+                    "Stir together flour, baking soda and salt. Beat butter, granulated sugar, brown sugar and vanilla in large bowl with mixer until creamy. Add eggs; beat well. Gradually add flour mixture, beating well. Stir in chocolate chips and nuts, if desired. Drop by rounded teaspoons onto ungreased cookie sheet.",
+                    "Bake 8 to 10 minutes or until lightly browned. Cool slightly; remove from cookie sheet to wire rack. Cool completely."
+                ],
+                cookieIngredients: [
+                    "2 1/4 cups all-purpose flour (550 mL)",
+                    "1 tsp baking soda (5 mL)",
+                    "1/2 tsp salt (2 mL)",
+                    "1 cup butter (250 mL)",
+                    "3/4 cup granulated sugar (175 mL)",
+                    "3/4 cup light brown sugar (175 mL)",
+                    "1 tsp vanilla extract (5 mL)",
+                    "2 eggs (2)",
+                    "2 cups Tentacles Dark Chocolate Chips or Tentacles Semi-Sweet Chocolate Chips (500 mL)",
+                    "1 cup nuts (250 mL)"
+                ],
+                notes:  [
+                    "Makes about 5 dozen cookies.",
+                    "For an ice cream sandwich press one small scoop vanilla ice cream between two cookies." 
+                ],
+                recipeSource:"https://www.allrecipes.com/recipe/10813/best-chocolate-chip-cookies/"
+                }
+        }
     }
     render(){
         return (
             <div id="templateHome">
-
+                <RecipeHeader title={this.state.data.title} desc={this.state.data.descriptor} prepTime={this.state.data.prepTime} difficultyLevel={this.state.data.difficultyLevel}></RecipeHeader>
+                <RecipeArea cookieSteps={this.state.data.cookieSteps} cookieIngredients={this.state.data.cookieIngredients} notes={this.state.data.notes} ></RecipeArea>
             </div>
         )
     }
