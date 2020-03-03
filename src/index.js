@@ -62,14 +62,14 @@ class RecipeHeader extends React.Component{
     render(){
         return (
             <main>
-                <hedaer>
+                <header>
                     <h1>{this.props.title}</h1>
                     <h2>{this.props.desc}</h2>
                     <div>
                         <p id="prep">Preparation Time: {this.props.prepTime}</p>
                         <p id="difficulty">Difficulty: {this.props.difficultyLevel}</p>
                     </div>
-                </hedaer>
+                </header>
             </main>
         )
     }
