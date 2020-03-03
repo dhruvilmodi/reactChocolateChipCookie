@@ -22,7 +22,7 @@ class IngredientsArea extends React.Component{
         return (
             <section id="ingredients">
                 <h3>Ingredients</h3>
-                <ul> </ul>
+                <ul>{ingredientsList}</ul>
             </section>
         )
     }
