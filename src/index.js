@@ -37,13 +37,17 @@ class RecipeNotes extends React.Component{
 class StepsArea extends React.Component{
     render(){
         const steps = this.props.steps;
-        const recipeSteps = steps.map();
+        const recipeSteps = steps.map((step, stepNum) => {
+            return(
+                <li key={stepNum}>{step}</li>
+            );
+        });
         return (
             <section id="steps">
                 <h3>Steps</h3>
                 <div>
-                    <ol> </ol>
-                    
+                    <ol>{recipeSteps}</ol>
+                    <RecipeNotes notes={this.props.notes}></RecipeNotes>
                 </div>
             </section>
         )
