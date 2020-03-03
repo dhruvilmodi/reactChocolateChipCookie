@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-/* 
-function RecipeHeader(props){
-    return (
-        
-    )
-} */
 
 class IngredientsArea extends React.Component{
     render(){
@@ -30,7 +24,17 @@ class IngredientsArea extends React.Component{
 
 class RecipeNotes extends React.Component{
     render(){
-        
+        const notes = this.props.notes;
+        const noteList = notes.map((note, noteNum) => {
+            return(
+                <li key={noteNum}>{note}</li>
+            );
+        });
+        return(
+            <article>
+                <p>{noteList}</p>
+            </article>
+        );
     }
 }
 
